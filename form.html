@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/form_style.css">
+
+</head>
+<body>
+
+        <main class="main">
+            <div class="container-fluid main-content">
+                <div class="row m-top-md main-content-top">
+                    <div class="col s12 m8 l9">
+                        <h4 class="heading">Заявка на заказ</h4>
+                    </div>
+                    <div class="col s12 m4 l3">
+                        
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="col s12">
+                        <form class="create_application">
+                            <div class="select-wrapper col s12">
+                                <select>
+                                  <option value="" disabled selected>Выберите покупателя</option>
+                                  <option value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Контрагент</label>
+                              </div>
+                              <div class="select-wrapper col s12">
+                                <select>
+                                  <option value="" disabled selected>Выберите договор</option>
+                                  <option value="1">Option 1</option>
+                                  <option value="2">Option 2</option>
+                                  <option value="3">Option 3</option>
+                                </select>
+                                <label>Договор</label>
+                              </div>
+                              <div class="select-wrapper col s12">
+                                <h6>Адрес доставки</h6>
+                                <p class="text-start">Адрес появится после выбора договора.</p>
+                                <p>241903 г.Брянск, рп Б.Полпино, пер. Октябрьский, дом № 2а</p>
+                                <div class="col s12 m12 form-btns delivery-btns">
+                                    <span class="methods form-btn-access">авто</span>
+                                    <span class="type form-btn-access">самовывоз</span>
+                                </div>
+                                
+                                
+                              </div>
+                              <div class="select-wrapper col s12">
+                                <label for="date" class="">Планируемая дата отгрузки</label>
+                                <input id="date" type="text" class="datepicker" value="" name="DATE">
+                                
+                              </div>
+                              <div class="col s12 block-goods">
+                                  <h6>Наменклатуры и распределение отгрузки</h6>
+                                  <div class="col s12 block-goods_add" data-maxkg="1000">
+                                    <div id="canvas-holder">
+                                      <canvas id="chart-area"></canvas>
+                                      <h5 class="proc"></h5>
+                                    </div>
+                                  </div>
+
+                                  <div class="col s12 m12 form-btns">
+                                    <button class="btn form-btn-grey modal-trigger" data-target="modal_goods" type="button" value="">
+                                      <i class="material-icons dp48">add_circle_outline</i>
+                                      <span>Добавить номенклатуру</span></button> 
+                                    
+                                </div>
+                              </div>
+                            <div class="col s12 m12 form-btns">
+                                <button class="btn form-btn-access" type="submit" value="Submit">Отправить заявку</button> 
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    <div id="modal_goods" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4>Список товара</h4>
+        <dl class="ex-goods" data-color="color1" data-colorrgb="rgb(150, 2, 2)">
+          <dt><span class="num">Номенклатура №1</span>
+            <span class="name">Втулки</span>
+          </dt>
+          <dd><span class="pos">1 позиция</span> <span class="kg">100кг</span></dd>
+        </dl>
+        <dl class="ex-goods" data-color="color2" data-colorrgb="rgba(0, 150,0)">
+          <dt><span class="num">Номенклатура №2</span>
+            <span class="name">Втулки</span>
+          </dt>
+          <dd><span class="pos">1 позиция</span> <span class="kg">200кг</span></dd>
+        </dl>
+        <dl class="ex-goods" data-color="color3" data-colorrgb="rgb(0, 0, 150)">
+          <dt><span class="num">Номенклатура №3</span>
+            <span class="name">Втулки</span>
+          </dt>
+          <dd><span class="pos">1 позиция</span> <span class="kg">300кг</span></dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+      </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="./js/chart.min.js"></script>
+<script src="./js/utils.js"></script>
+<script src="./js/forms.js"></script>
+<script>
+  
+  var config = {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [
+                100,
+                
+            ],
+            backgroundColor: [
+                window.chartColors.grey,
+                
+            ],
+            label: 'Dataset 1'
+        }],
+        labels: [
+            '100%',
+            
+        ]
+    },
+    options: {
+        responsive: true,
+        legend: {
+            position: 'top',
+        },       
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    }
+};
+
+window.onload = function() {
+    var ctx = document.getElementById('chart-area').getContext('2d');
+    window.myDoughnut = new Chart(ctx, config);
+};
+
+
+
+</script>
+            
+</html>
