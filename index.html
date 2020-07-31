@@ -12,39 +12,36 @@
 
         <main class="main">
             <div class="container-fluid main-content">
-                <div class="row m-top-md main-content-top">
-                    <div class="col s12 m8 l9">
-                        <h4 class="heading">Заявка на заказ</h4>
-                    </div>
-                    <div class="col s12 m4 l3">
-                        
-                    </div>
-                </div>
+                
                 <div class="container-fluid">
+                  <h4 class="heading t-center">Заявка на заказ</h4>
                     <div class="col s12">
                         <form class="create_application">
+                          
                             <div class="select-wrapper col s12">
-                                <select>
+                              <label>Контрагент</label>
+                                <select required>
                                   <option value="" disabled selected>Выберите покупателя</option>
                                   <option value="1">Option 1</option>
                                   <option value="2">Option 2</option>
                                   <option value="3">Option 3</option>
                                 </select>
-                                <label>Контрагент</label>
+                                
                               </div>
                               <div class="select-wrapper col s12">
-                                <select>
+                                <label>Договор</label>
+                                <select required>
                                   <option value="" disabled selected>Выберите договор</option>
                                   <option value="1">Option 1</option>
                                   <option value="2">Option 2</option>
                                   <option value="3">Option 3</option>
                                 </select>
-                                <label>Договор</label>
+                                
                               </div>
                               <div class="select-wrapper col s12">
-                                <h6>Адрес доставки</h6>
-                                <p class="text-start">Адрес появится после выбора договора.</p>
-                                <p>241903 г.Брянск, рп Б.Полпино, пер. Октябрьский, дом № 2а</p>
+                                <label>Адрес доставки</label>
+                                <input type="text" readonly placeholder="Адрес появится после выбора договора." value="241903 г.Брянск, рп Б.Полпино, пер. Октябрьский, дом № 2а">
+
                                 <div class="col s12 m12 form-btns delivery-btns">
                                     <span class="methods form-btn-access">авто</span>
                                     <span class="type form-btn-access">самовывоз</span>
@@ -54,14 +51,15 @@
                               </div>
                               <div class="select-wrapper col s12">
                                 <label for="date" class="">Планируемая дата отгрузки</label>
-                                <input id="date" type="text" class="datepicker" value="" name="DATE">
+                                <input id="date" type="text" class="datepicker" value="" name="DATE" required>
                                 
                               </div>
                               <div class="col s12 block-goods">
-                                  <h6>Наменклатуры и распределение отгрузки</h6>
+                                  <h6 class="t-center">Номенклатура и распределение отгрузки</h6>
                                   <div class="col s12 block-goods_add" data-maxkg="1000">
                                     <div id="canvas-holder">
                                       <canvas id="chart-area"></canvas>
+                                      <p class="wt">Заполнено <span class="fill"></span> кг из <span class="max">1000</span> кг</p>
                                       <h5 class="proc"></h5>
                                     </div>
                                   </div>
@@ -74,7 +72,7 @@
                                 </div>
                               </div>
                             <div class="col s12 m12 form-btns">
-                                <button class="btn form-btn-access" type="submit" value="Submit">Отправить заявку</button> 
+                                <button class="btn form-btn-access submit" data-target="modal_ok" type="submit" value="Submit">Отправить заявку</button> 
                                 
                             </div>
                         </form>
@@ -85,7 +83,7 @@
 
     <div id="modal_goods" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>Список товара</h4>
+        <h3 class="modal-heading">Список товара</h3>
         <dl class="ex-goods" data-color="color1" data-colorrgb="rgb(150, 2, 2)">
           <dt><span class="num">Номенклатура №1</span>
             <span class="name">Втулки</span>
@@ -104,6 +102,14 @@
           </dt>
           <dd><span class="pos">1 позиция</span> <span class="kg">300кг</span></dd>
         </dl>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
+      </div>
+    </div>
+    <div id="modal_ok" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <p>Спасибо за оформление заявки. В ближайшее время с вами свяжется наш менеджер</p>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-close waves-effect waves-green btn-flat">Закрыть</a>
