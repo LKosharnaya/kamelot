@@ -18,11 +18,11 @@ $('body').on('click','.ex-goods', function(){
         var legh_block = $('.block-goods_add .row-goods').length;
         var next_block = legh_block + 1;
         $('<div class="row-goods '+data_color+'"><table class="table-goods '+ data_color+'" style="background:'+bg_color+'"><th class="th-num_goods" data-attr="'
-        +num_goods+'">'+num_goods+'</th><th>'+name_goods+'</th><tr><td class="td_kg" data-kg="'+num_kg+'"> '+ pos +'='+ kg_goods+
-        '</td><td><div class="number"><span class="minus" data-attr="'+data_color+'" data-bg="'+bg_color+'" data-leght="'+next_block+
+        +num_goods+'">'+num_goods+'</th><th>'+name_goods+'</th><th class="th-del"><i class="material-icons dp48 del" data-leght="'+next_block+'" data-attr="'
+        +data_color+'">delete</i></th><tr><td class="td_kg" data-kg="'+num_kg+'"> '+ pos +' = '+ kg_goods+
+        '</td><td colspan="2"><div class="number"><span class="minus" data-attr="'+data_color+'" data-bg="'+bg_color+'" data-leght="'+next_block+
         '">-</span><input type="text" value="0"/><span class="plus" data-attr="'
-        +data_color+'" data-bg="'+bg_color+'" data-leght="'+next_block+'">+</span></div></td></tr></table>'+
-        '<div class="icon-preview col s6 m3"><i class="material-icons dp48 del" data-leght="'+next_block+'" data-attr="'+data_color+'">delete</i></div></div>')
+        +data_color+'" data-bg="'+bg_color+'" data-leght="'+next_block+'">+</span></div></td></tr></table></div>')
         .appendTo('.block-goods_add');
         $(this).addClass('disabled');
         $('#modal_goods').modal('close');
@@ -59,6 +59,8 @@ $('body').on('click','.material-icons.del', function(){
     });   
     window.myDoughnut.update();
     $('h5.proc').text(proc_ost+'%');
+    var fill_kg = max_kg * proc_ost/100;
+            $('.wt .fill').text(fill_kg);
     for(d=0; d<legh_block; d++){
         $('.block-goods_add .minus:eq('+d+')').attr('data-leght',d+1);
         $('.block-goods_add .plus:eq('+d+')').attr('data-leght',d+1);
@@ -97,6 +99,8 @@ $('body').on('click','.material-icons.del', function(){
                 
             });
             $('h5.proc').text(proc_ost+'%');
+            var fill_kg = max_kg * proc_ost/100;
+            $('.wt .fill').text(fill_kg);
             window.myDoughnut.update();
         }
     });
@@ -115,6 +119,8 @@ $('body').on('click','.material-icons.del', function(){
         $input.val(parseInt($input.val()) + 1);        
         $input.change();
         var quantity = $input.val();
+        
+
         var proc = kg/max_kg * 100 * quantity;
         
         if (config.data.datasets.length > 0) {
@@ -127,18 +133,21 @@ $('body').on('click','.material-icons.del', function(){
                 for(i=1; i<= legh_block; i++){
                     proc_ost += dataset.data[i];
                     dataset.data[0] = 100 - proc_ost;
+                    
                 }
-                
-                
+
             });
-            
-            
-            $('h5.proc').text(proc_ost+'%');
-            window.myDoughnut.update();
+
         }
-        
+        var fill_kg = max_kg * proc_ost/100;
+        $('h5.proc').text(proc_ost+'%');
+        $('.wt .fill').text(fill_kg);
+        window.myDoughnut.update();
         
     });
+$('.create_application').submit(function(){
+    $('#modal_ok').modal('open');
 
+});
 
 
