@@ -150,7 +150,9 @@ $('.create_application').submit(function(){
 
 });
 $('.reset_cunvas').on('click', function(){
-    window.myDoughnut.destroy();
+    window.myDoughnut.clear();
+    $('.proc').text('0%');
+    $('.fill').text('0');
 });
 
 
