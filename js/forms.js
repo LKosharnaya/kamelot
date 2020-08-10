@@ -178,11 +178,12 @@ $('.reset_cunvas').on('click', function(){
         }
     }
 };
-    $('.row-goods').remove(); 
-    $('#modal_goods dl').removeClass('disabled');
+    
     
     var ctx = document.getElementById('chart-area').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);
+    $('.row-goods').remove(); 
+    $('#modal_goods dl').removeClass('disabled');
     $('.proc').text('0%');
     $('.fill').text('0');
 });
