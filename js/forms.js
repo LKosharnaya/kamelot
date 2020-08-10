@@ -150,24 +150,21 @@ $('.create_application').submit(function(){
 
 });
 $('.reset_cunvas').on('click', function(){
-    window.myDoughnut.reset();
+    window.myDoughnut.clear();
     /*var config = {
     type: 'doughnut',
     data: {
         datasets: [{
             data: [
                 100,
-                
             ],
             backgroundColor: [
                 window.chartColors.grey,
-                
             ],
             label: 'Dataset 1'
         }],
         labels: [
             '100%',
-            
         ]
     },
     options: {
@@ -180,7 +177,7 @@ $('.reset_cunvas').on('click', function(){
             animateRotate: true
         }
     }
-};
+};*/
     var ctx = document.getElementById('chart-area').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);*/
     $('.proc').text('0%');
