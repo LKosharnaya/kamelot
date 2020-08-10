@@ -151,34 +151,7 @@ $('.create_application').submit(function(){
 });
 $('.reset_cunvas').on('click', function(){
     window.myDoughnut.clear();
-    /*var config = {
-    type: 'doughnut',
-    data: {
-        datasets: [{
-            data: [
-                100,
-            ],
-            backgroundColor: [
-                window.chartColors.grey,
-            ],
-            label: 'Dataset 1'
-        }],
-        labels: [
-            '100%',
-        ]
-    },
-    options: {
-        responsive: true,
-        legend: {
-            position: 'top',
-        },       
-        animation: {
-            animateScale: true,
-            animateRotate: true
-        }
-    }
-};*/
-    
+      
     var ctx = document.getElementById('chart-area').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);*/
     $('.proc').text('0%');
