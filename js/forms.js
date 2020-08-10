@@ -150,8 +150,8 @@ $('.create_application').submit(function(){
 
 });
 $('.reset_cunvas').on('click', function(){
-    window.myDoughnut.clear();
-    var config = {
+    window.myDoughnut.reset();
+    /*var config = {
     type: 'doughnut',
     data: {
         datasets: [{
@@ -182,7 +182,7 @@ $('.reset_cunvas').on('click', function(){
     }
 };
     var ctx = document.getElementById('chart-area').getContext('2d');
-    window.myDoughnut = new Chart(ctx, config);
+    window.myDoughnut = new Chart(ctx, config);*/
     $('.proc').text('0%');
     $('.fill').text('0');
 });
