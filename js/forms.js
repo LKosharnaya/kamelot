@@ -151,7 +151,7 @@ $('.create_application').submit(function(){
 });
 $('.reset_cunvas').on('click', function(){
     window.myDoughnut.clear();
-    $('.row-goods).remove();  
+    $('.row-goods').remove();  
     var ctx = document.getElementById('chart-area').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);
     $('.proc').text('0%');
