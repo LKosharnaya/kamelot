@@ -149,5 +149,8 @@ $('.create_application').submit(function(){
     $('#modal_ok').modal('open');
 
 });
+$('.reset_cunvas').on('click', function(){
+    window.myDoughnut.reset();
+});
 
 
