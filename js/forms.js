@@ -153,6 +153,7 @@ $('.reset_cunvas').on('click', function(){
     window.myDoughnut.destroy();
     $('.row-goods').remove(); 
     $('#modal_goods dl').removeClass('disabled');
+    
     var ctx = document.getElementById('chart-area').getContext('2d');
     window.myDoughnut = new Chart(ctx, config);
     $('.proc').text('0%');
