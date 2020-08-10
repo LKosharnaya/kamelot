@@ -151,6 +151,33 @@ $('.create_application').submit(function(){
 });
 $('.reset_cunvas').on('click', function(){
     window.myDoughnut.destroy();
+    var config = {
+    type: 'doughnut',
+    data: {
+        datasets: [{
+            data: [
+                100,
+            ],
+            backgroundColor: [
+                window.chartColors.grey,
+            ],
+            label: 'Dataset 1'
+        }],
+        labels: [
+            '100%',
+        ]
+    },
+    options: {
+        responsive: true,
+        legend: {
+            position: 'top',
+        },       
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    }
+};
     $('.row-goods').remove(); 
     $('#modal_goods dl').removeClass('disabled');
     
